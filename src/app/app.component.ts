@@ -2,8 +2,11 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
+import { SystemsPage } from '../pages/systems/systems';
+import { NotificationsPage } from '../pages/notifications/notifications';
+import { SettingsPage } from '../pages/settings/settings';
+import { AboutPage } from '../pages/about/about';
+import { LoginPage } from '../pages/login/login';
 
 
 @Component({
@@ -12,17 +15,19 @@ import { Page2 } from '../pages/page2/page2';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = Page1;
+  rootPage: any = LoginPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, iconName: string}>;
 
   constructor(public platform: Platform) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Page One', component: Page1 },
-      { title: 'Page Two', component: Page2 }
+      { title: 'Systems', component: SystemsPage, iconName: "globe-outline"},
+      { title: 'NotificationsPage', component: NotificationsPage, iconName: "chatboxes-outline"},
+      { title: 'Settings', component: SettingsPage , iconName: "options-outline"},
+      { title: 'About', component: AboutPage, iconName: "cloud-outline"}
     ];
 
   }
