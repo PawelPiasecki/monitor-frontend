@@ -13,7 +13,20 @@ import { NavController } from 'ionic-angular';
 })
 export class SystemsPage {
 
-  constructor(public navCtrl: NavController) {}
+  systems: Array<{name: string,info:string}>
+
+  constructor(public navCtrl: NavController) {
+
+    this.systems = [
+       {name: "System #1",info: "infos"},
+       {name: "System #2",info: "infos"}
+    ];
+
+    
+
+  }
+
+
 
   ionViewDidLoad() {
     console.log('Hello SystemsPage Page');

@@ -24,10 +24,10 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Systems', component: SystemsPage, iconName: "globe-outline"},
-      { title: 'NotificationsPage', component: NotificationsPage, iconName: "chatboxes-outline"},
-      { title: 'Settings', component: SettingsPage , iconName: "options-outline"},
-      { title: 'About', component: AboutPage, iconName: "cloud-outline"}
+      { title: 'Systems', component: SystemsPage, iconName: "ios-globe-outline"},
+      { title: 'NotificationsPage', component: NotificationsPage, iconName: "ios-chatboxes-outline"},
+      { title: 'Settings', component: SettingsPage , iconName: "ios-options-outline"},
+      { title: 'About', component: AboutPage, iconName: "ios-cloud-outline"}
     ];
 
   }
