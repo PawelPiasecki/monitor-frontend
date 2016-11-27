@@ -1,0 +1,24 @@
+<!--
+  Generated template for the System page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+  <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+  </button>    
+    <ion-title>{{system.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+    <ion-item-group *ngFor="let room of system.rooms">
+      <ion-item-divider light>{{room.name}}</ion-item-divider>
+      <button ion-item *ngFor="let sensor of room.sensors" (click)="gotoSensor(sensor)">{{sensor.name}}</button>
+    </ion-item-group>  
+</ion-content>

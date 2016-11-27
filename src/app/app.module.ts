@@ -7,7 +7,7 @@ import { NotificationsPage } from '../pages/notifications/notifications';
 import { SettingsPage } from '../pages/settings/settings';
 import { AboutPage } from '../pages/about/about';
 import { LoginPage } from '../pages/login/login';
-import { CurrentSystemPage } from '../pages/current-system/current-system';
+import { SystemPage } from '../pages/system/system';
 import { SensorPage } from '../pages/sensor/sensor';
 
 
@@ -19,7 +19,7 @@ import { SensorPage } from '../pages/sensor/sensor';
     SettingsPage,
     AboutPage,
     LoginPage,
-    CurrentSystemPage,
+    SystemPage,
     SensorPage
 
   ],
@@ -34,7 +34,7 @@ import { SensorPage } from '../pages/sensor/sensor';
     SettingsPage,
     AboutPage,
     LoginPage,
-    CurrentSystemPage,
+    SystemPage,
     SensorPage
 
   ],

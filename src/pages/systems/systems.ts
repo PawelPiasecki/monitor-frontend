@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { SystemPage } from '../system/system';
+import { System } from '../../model/system';
+import { Room } from '../../model/room';
+import { Sensor } from '../../model/sensor';
 
 /*
   Generated class for the Systems page.
@@ -13,13 +17,18 @@ import { NavController } from 'ionic-angular';
 })
 export class SystemsPage {
 
-  systems: Array<{name: string,info:string}>
+  systems: System[];
+  rooms1: Room[];
+  sensors1: Sensor[];
 
   constructor(public navCtrl: NavController) {
 
+    this.sensors1 = [{id:1,name:"Sensor1",state: true}];
+    this.rooms1 = [{id:1,name: "duzy pokoj",sensors: this.sensors1}];
+
     this.systems = [
-       {name: "System #1",info: "infos"},
-       {name: "System #2",info: "infos"}
+       {id:1,name: "System #1",info: "infos",localization: "Babcia1",rooms: this.rooms1}
+      
     ];
 
     
@@ -28,8 +37,13 @@ export class SystemsPage {
 
 
 
+
   ionViewDidLoad() {
     console.log('Hello SystemsPage Page');
   }
 
+  gotoSystem(system) {
+    console.log(system);
+     this.navCtrl.push(SystemPage, {param1:system} );
+  }
 }
