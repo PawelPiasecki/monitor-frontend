@@ -20,31 +20,26 @@ export class NotificationsPage {
 
     this.notifications = [
       {content:"Czujnik1 wykryl dym",date: new Date("2016-11-26T18:32:00")},
-      {content:"Czujnik2 wykryl niezamniete drzwi",date: new Date("2016-11-25T12:34:00")},
+      {content:"Czujnik2 wykryl niezamkniete drzwi",date: new Date("2016-11-25T12:34:00")},
     ];
 
-    this.groupNotifications(this.notifications);
-    console.log(this.groupedNotifications)
+    this.groupNotifications(this.notifications);    
   }
 
-  groupNotifications(notifications){
-    console.log('Started sorting');
+  groupNotifications(notifications){    
     let sortedNotifications = notifications.sort((a,b) => {     
       if(a.date > b.date){        
         return -1;
       }else if(b.date > a.date){        
         return 1
       }else {        
-        return 0;
-        
+        return 0;        
       }
-    });
-    console.log(sortedNotifications);
+    });   
     let currentDate =false;
     let currentNotifications = [];
 
-    for (let notification of sortedNotifications){
-      console.log(notification.date);
+    for (let notification of sortedNotifications){      
       if(notification.date != currentDate){
         currentDate=notification.date;
 
@@ -53,8 +48,7 @@ export class NotificationsPage {
           notifications: []
         };
 
-        currentNotifications = newGroup.notifications;
-        console.log(currentNotifications)
+        currentNotifications = newGroup.notifications;        
         this.groupedNotifications.push(newGroup);
       }
 
