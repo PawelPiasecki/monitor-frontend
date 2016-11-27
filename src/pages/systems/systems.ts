@@ -23,7 +23,7 @@ export class SystemsPage {
 
   constructor(public navCtrl: NavController) {
 
-    this.sensors1 = [{id:1,name:"Sensor1",state: true}];
+    this.sensors1 = [{id:1,name:"Sensor1",state: true,value:27}];
     this.rooms1 = [{id:1,name: "duzy pokoj",sensors: this.sensors1}];
 
     this.systems = [
