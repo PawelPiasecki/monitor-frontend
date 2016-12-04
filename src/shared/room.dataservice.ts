@@ -2,56 +2,57 @@ import {Injectable} from '@angular/core';
 import {Http, Response, Headers, RequestOptionsArgs} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {Configuration} from './app.configuration';
-import {Sensor} from "../model/sensor";
+import {Room} from "../model/room";
 
 @Injectable()
-export class SensorDataService {
+export class NotificationDataService {
 
     private actionUrl: string;
 
 
     constructor(private _http: Http, private _configuration: Configuration) {
-        this.actionUrl = _configuration.baseUrl + 'sensor/';
+        this.actionUrl = _configuration.baseUrl + 'room/';
     }
 
-    public GetAllSensors = (): Observable<Sensor[]> => {
+    public GetAllRooms = (): Observable<Room[]> => {
         return this._http.get(this.actionUrl)
-            .map((response: Response) => <Sensor[]>response.json())
+            .map((response: Response) => <Room[]>response.json())
             .catch(this.handleError);
     }
 
-    public GetSingleSensor = (id: number): Observable<Sensor> => {
+    public GetSingleRoom = (id: number): Observable<Room> => {
         return this._http.get(this.actionUrl + id)
-            .map((response: Response) => <Sensor>response.json())
+            .map((response: Response) => <Room>response.json())
             .catch(this.handleError);
     }
 
-    public AddSensor = (sensor: Sensor): Observable<Sensor> => {
+    public AddRoom = (room: Room): Observable<Room> => {
         let toAdd: string = JSON.stringify(
             {
-                id: sensor.id,
-                name: sensor.name,
-                state: sensor.state,
-                value: sensor.value
+
+                id: room.id,
+                name: room.name,
+                sensors: room.sensors
+
             });
 
         let options = this.prepareOptions(null);
 
         return this._http.post(this.actionUrl, toAdd, options)
-            .map((response: Response) => <Sensor>response.json())
+            .map((response: Response) => <Room>response.json())
 
             .catch(this.handleError);
     }
 
-    public UpdateSensor = (id: number, sensorToUpdate: Sensor): Observable<Sensor> => {
+    public UpdateRoom = (id: number, roomToUpdate: Room): Observable<Room> => {
         let options = this.prepareOptions(null);
 
-        return this._http.put(this.actionUrl + id, JSON.stringify(sensorToUpdate), options)
-            .map((response: Response) => <Sensor>response.json())
+        return this._http.put(this.actionUrl + id, JSON.stringify(roomToUpdate), options)
+            .map((response: Response) => <Room>response.json())
             .catch(this.handleError);
     }
 
-    public DeleteSensor = (id: number): Observable<Response> => {
+    public DeleteRoom = (id: number): Observable<Response> => {
         return this._http.delete(this.actionUrl + id)
             .catch(this.handleError);
     }
