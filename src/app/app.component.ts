@@ -8,6 +8,8 @@ import { SettingsPage } from '../pages/settings/settings';
 import { AboutPage } from '../pages/about/about';
 import { LoginPage } from '../pages/login/login';
 
+declare var FCMPlugin;
+
 
 @Component({
   templateUrl: 'app.html'
@@ -38,6 +40,34 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
+
+      FCMPlugin.getToken(
+        function (token) {
+            console.log(token);           
+        },
+        function (err) {
+            console.log('error retrieving token: ' + err);
+        }
+      );
+
+      FCMPlugin.onNotification(
+        
+        function(data){            
+          if(data.wasTapped){
+          //Notification opened from bar  
+            console.log(data);  
+          }else{                 
+          //Notification opened when application was active
+            console.log(data);
+          }
+        },
+        function(msg){
+            console.log('onNotification callback successfully registered: ' + msg);
+        },
+        function(err){
+            console.log('Error registering onNotification callback: ' + err);
+        }
+        );
     });
   }
 
