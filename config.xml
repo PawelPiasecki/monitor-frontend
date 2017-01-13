@@ -29,4 +29,5 @@
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
     <plugin name="cordova-plugin-fcm" spec="~1.1.5" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~1.5.0" />
 </widget>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { SystemPage } from '../system/system';
 import { System } from '../../model/system';
 import { Room } from '../../model/room';
@@ -21,8 +21,8 @@ export class SystemsPage {
   rooms1: Room[];
   sensors1: Sensor[];
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController,public navParams: NavParams) {
+    console.log(this.navParams.get('param1'));
     this.sensors1 = [{id:1,name:"Sensor1",state: true,value:27}];
     this.rooms1 = [{id:1,name: "duzy pokoj",sensors: this.sensors1}];
 

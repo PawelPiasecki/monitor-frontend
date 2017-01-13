@@ -9,6 +9,10 @@ import { AboutPage } from '../pages/about/about';
 import { LoginPage } from '../pages/login/login';
 import { SystemPage } from '../pages/system/system';
 import { SensorPage } from '../pages/sensor/sensor';
+import { Storage } from '@ionic/storage';
+import {Http} from '@angular/http';
+
+import {AuthHttp, AuthConfig} from 'angular2-jwt';
 
 
 @NgModule({
@@ -38,6 +42,6 @@ import { SensorPage } from '../pages/sensor/sensor';
     SensorPage
 
   ],
-  providers: []
+  providers: [Storage, {provide: AuthHttp, useFactory: (http) => {return new AuthHttp(new AuthConfig, http);}, deps: [Http]}]
 })
 export class AppModule {}
