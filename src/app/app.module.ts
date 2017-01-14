@@ -10,11 +10,8 @@ import { LoginPage } from '../pages/login/login';
 import { SystemPage } from '../pages/system/system';
 import { SensorPage } from '../pages/sensor/sensor';
 import { Storage } from '@ionic/storage';
-import {Http} from '@angular/http';
+import { Http } from '@angular/http';
 
-import {AuthHttp, AuthConfig} from 'angular2-jwt';
-
-export function authFactory(http: Http){return new AuthHttp(new AuthConfig(), http);}
 
 @NgModule({
   declarations: [
@@ -43,7 +40,7 @@ export function authFactory(http: Http){return new AuthHttp(new AuthConfig(), ht
     SensorPage
 
   ],
-  providers: [Storage, {provide: AuthHttp, useFactory: authFactory, deps: [Http]}],
+  providers: [Storage],
 })
 
 export class AppModule {}
