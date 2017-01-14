@@ -4,13 +4,13 @@ import { SystemsPage } from './../systems/systems';
 import { AuthHttp } from 'angular2-jwt';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Http, Headers} from '@angular/http';
+import { Http, Headers, RequestOptionsArgs } from '@angular/http';
 import { JwtHelper } from 'angular2-jwt';
 import { AuthService } from '../../services/auth/auth';
 import { Storage } from '@ionic/storage';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import 'rxjs/add/operator/map';
 
-import 'rxjs/add/operator/map'
 
 
 /*
@@ -26,10 +26,10 @@ import 'rxjs/add/operator/map'
 })
 export class LoginPage {
 
-    LOGIN_URL: string = "http://localhost:8080/login";    
+    LOGIN_URL: string = "http://192.168.1.10:8080/login";    
     authHttp: AuthHttp;
     auth: AuthService; 
-    systemsData: System[];
+    authToken: string; 
     // When the page loads, we want the Login segment to be selected
     authType: string = "login";
     // We need to set the content type for the server
@@ -38,10 +38,10 @@ export class LoginPage {
     jwtHelper: JwtHelper = new JwtHelper();    
     user: string;
 
-  constructor(public navCtrl: NavController,private http: Http,public storage: Storage) {
+  constructor(public navCtrl: NavController,private http: Http,public storage: Storage) {    
     this.auth = AuthService;    
-    this.storage.get('profile').then(profile => {
-      this.user = JSON.parse(profile);
+    this.storage.get('id_token').then((val)=> {
+      this.authToken=val
     }).catch(error => {
       console.log(error);
     });
@@ -52,33 +52,47 @@ export class LoginPage {
     console.log(JSON.stringify(credentials));
     this.http.post(this.LOGIN_URL, JSON.stringify(credentials), { headers: this.contentHeader })      
       .subscribe(
-        res => this.authSuccess(res.headers.get("Authorization")),
+        res => this.authSuccess(res.headers.get("Authorization").substring(7)),
         err => this.error = err
       );
   }
 
   authSuccess(token) {
     console.log("Auth ok");
+       
     this.error = null;
-    this.storage.set('id_token', token);
-    this.user = this.jwtHelper.decodeToken(token).username;
-    this.getSystems();
+    this.authToken=token;
+    this.storage.set('id_token', token).then(()=> {this.getSystems();});
+    
+    
 
   }
 
-  getSystems() {
-    this.authHttp.get('http://localhost:8080/systems')
+  getSystems() {     
+    console.log("Getting Systems...")    
+    //TODO add logout(clean key in storage)
+    //TODO add check for token in memory
+    
+    let getHeaders: Headers = new Headers({"Authorization":this.authToken});
+    this.http.get('http://192.168.1.10:8080/systems',{headers: getHeaders})
+      .map(res => res.json())
       .subscribe(        
-        data => this.systemsData = JSON.parse(data['_body']),
+        _embedded => this.gotoSystemsPage(_embedded.systems), 
         err => console.log(err),
         () => console.log('Request Complete')
       );
-      this.gotoSystemsPage();
+      
     
   }
 
-  gotoSystemsPage(){
-    this.navCtrl.push(SystemsPage, {param1:this.systemsData} );
+
+
+
+  
+
+  gotoSystemsPage(systemsData){
+    console.log(systemsData);
+    this.navCtrl.setRoot(SystemsPage, {param1:systemsData} );
   }
 
   ionViewDidLoad() {

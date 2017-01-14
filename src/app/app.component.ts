@@ -1,3 +1,4 @@
+import { Storage } from '@ionic/storage';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
@@ -7,6 +8,7 @@ import { NotificationsPage } from '../pages/notifications/notifications';
 import { SettingsPage } from '../pages/settings/settings';
 import { AboutPage } from '../pages/about/about';
 import { LoginPage } from '../pages/login/login';
+
 
 declare var FCMPlugin;
 
@@ -36,6 +38,7 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
+      
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();

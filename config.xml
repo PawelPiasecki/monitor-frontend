@@ -30,4 +30,5 @@
     </feature>
     <plugin name="cordova-plugin-fcm" spec="~1.1.5" />
     <plugin name="cordova-plugin-inappbrowser" spec="~1.5.0" />
+    <plugin name="cordova-sqlite-storage" spec="~2.0.1" />
 </widget>

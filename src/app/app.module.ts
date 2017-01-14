@@ -14,6 +14,7 @@ import {Http} from '@angular/http';
 
 import {AuthHttp, AuthConfig} from 'angular2-jwt';
 
+export function authFactory(http: Http){return new AuthHttp(new AuthConfig(), http);}
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {AuthHttp, AuthConfig} from 'angular2-jwt';
     SensorPage
 
   ],
-  providers: [Storage, {provide: AuthHttp, useFactory: (http) => {return new AuthHttp(new AuthConfig, http);}, deps: [Http]}]
+  providers: [Storage, {provide: AuthHttp, useFactory: authFactory, deps: [Http]}],
 })
+
 export class AppModule {}
