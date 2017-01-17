@@ -1,3 +1,4 @@
+import { Configuration } from './../../shared/app.configuration';
 import { Component } from '@angular/core';
 import { NavController,NavParams } from 'ionic-angular';
 import { Sensor } from '../../model/sensor';
@@ -14,17 +15,19 @@ import { $WebSocket } from 'angular2-websocket/angular2-websocket'
 @Component({
   selector: 'page-sensor',
   templateUrl: 'sensor.html',
+  providers: [Configuration]
   
 })
 export class SensorPage {
   
   public sensor: Sensor;
   public ws: $WebSocket;
+  
 
 
-    constructor(public navCtrl: NavController,public navParams: NavParams) {
+    constructor(public navCtrl: NavController,public navParams: NavParams,_configuration: Configuration) {
     this.sensor=this.navParams.get('param1');
-    this.ws = new $WebSocket("ws://95.85.21.239:8080/websocket");
+    this.ws = new $WebSocket("ws://"+_configuration.BaseURL+"/websocket");
     this.ws.onMessage(
       (msg: MessageEvent)=> {
           console.log("onMessage ", msg.data);

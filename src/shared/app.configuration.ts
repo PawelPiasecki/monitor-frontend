@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
 export class Configuration {
-    baseUrl: string = "http://server_url/api";
+    BaseURL: string = "95.85.21.239:8080";
 
     title: string = "Grandma monitor";
 }
