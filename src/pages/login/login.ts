@@ -22,7 +22,7 @@ import 'rxjs/add/operator/map';
 })
 export class LoginPage {
 
-    BASE_URL: string = "http://192.168.1.10:8080" 
+    BASE_URL: string = "http://95.85.21.239:8080" 
     authToken: string;      
     contentHeader: Headers = new Headers({"Content-Type": "application/json"}); // Content-Type header
     error: string;

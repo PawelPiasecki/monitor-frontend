@@ -24,7 +24,7 @@ export class SensorPage {
 
     constructor(public navCtrl: NavController,public navParams: NavParams) {
     this.sensor=this.navParams.get('param1');
-    this.ws = new $WebSocket("ws://192.168.1.10:8080/websocket");
+    this.ws = new $WebSocket("ws://95.85.21.239:8080/websocket");
     this.ws.onMessage(
       (msg: MessageEvent)=> {
           console.log("onMessage ", msg.data);
