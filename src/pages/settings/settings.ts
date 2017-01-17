@@ -1,5 +1,7 @@
+import { LoginPage } from './../login/login';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 /*
   Generated class for the Settings page.
@@ -13,10 +15,18 @@ import { NavController } from 'ionic-angular';
 })
 export class SettingsPage {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController,public storage: Storage) {
+
+  }
 
   ionViewDidLoad() {
     console.log('Hello SettingsPage Page');
+  }
+
+  logOut(){
+    this.storage.remove('auth_token').catch(error => {
+      console.log(error);
+    }).then(()=>this.navCtrl.setRoot(LoginPage));
   }
 
 }
