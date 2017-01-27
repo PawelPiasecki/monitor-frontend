@@ -1,7 +1,5 @@
 import { Configuration } from './../../shared/app.configuration';
-import { FORM_DIRECTIVES } from 'angular2/common';
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Http, Headers } from '@angular/http';
 import { NavController, MenuController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';

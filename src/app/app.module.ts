@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { IonicApp, IonicModule } from 'ionic-angular';
+import { NgModule, ErrorHandler } from '@angular/core';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { SystemsPage } from '../pages/systems/systems';
 import { NotificationsPage } from '../pages/notifications/notifications';
@@ -9,7 +9,7 @@ import { LoginPage } from '../pages/login/login';
 import { SystemPage } from '../pages/system/system';
 import { SensorPage } from '../pages/sensor/sensor';
 import { Storage } from '@ionic/storage';
-import { Http } from '@angular/http';
+
 
 
 @NgModule({
@@ -25,7 +25,7 @@ import { Http } from '@angular/http';
 
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp,{platforms: {android: {scrollAssist: false,autoFocusAssist: false}}})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -39,7 +39,7 @@ import { Http } from '@angular/http';
     SensorPage
 
   ],
-  providers: [Storage],
+  providers: [Storage,{provide: ErrorHandler, useClass: IonicErrorHandler}],
 })
 
 export class AppModule {}

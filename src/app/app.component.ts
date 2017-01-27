@@ -8,7 +8,9 @@ import { AboutPage } from '../pages/about/about';
 import { LoginPage } from '../pages/login/login';
 
 
+
 declare var FCMPlugin;
+
 
 
 @Component({
@@ -41,8 +43,10 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
+      
+      if (this.platform.is('android') || this.platform.is('ios')) {
 
-      FCMPlugin.getToken(
+        FCMPlugin.getToken(
         function (token) {
             console.log(token);           
         },
@@ -69,6 +73,9 @@ export class MyApp {
             console.log('Error registering onNotification callback: ' + err);
         }
         );
+      }
+
+
     });
   }
 
