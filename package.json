@@ -1,7 +1,7 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "accenture-monitor-app",
+  "author": "Small Oxford Dev Team",
+  "homepage": "",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -28,6 +28,7 @@
     "rxjs": "5.0.0-beta.12",
     "zone.js": "0.6.26",
     "stompjs": "2.3.3",
+    "sockjs": "0.3.4",
     "sw-toolbox": "3.4.0"    
   },
   "devDependencies": {
@@ -46,5 +47,5 @@
   "cordovaPlatforms": [
     "android"
   ],
-  "description": "monitor-frontend: An Ionic project"
+  "description": "monitor-app: Monitoring system for your elder family members"
 }

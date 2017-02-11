@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { NavController,NavParams } from 'ionic-angular';
 import { Sensor } from '../../model/sensor';
 import { $WebSocket } from 'angular2-websocket/angular2-websocket'
+import * as Stomp from 'stompjs';
+
 
 /*
   Generated class for the Sensor page.
@@ -21,39 +23,35 @@ import { $WebSocket } from 'angular2-websocket/angular2-websocket'
 export class SensorPage {
   
   public sensor: Sensor;
+  stompClient: any;
   public ws: $WebSocket;
   
 
 
-    constructor(public navCtrl: NavController,public navParams: NavParams,_configuration: Configuration) {
-    this.sensor=this.navParams.get('param1');
-    this.ws = new $WebSocket("ws://"+_configuration.BaseURL+"/websocket");
-    this.ws.onMessage(
-      (msg: MessageEvent)=> {
-          console.log("onMessage ", msg.data);
-      },
-      {autoApply: false}
-    );
-
-    this.ws.getDataStream().subscribe(
-      (msg)=> {
-          this.sensor.value=msg.data.toString();       
-      },
-      (msg)=> {
-          console.log("error", msg);
-      },
-      ()=> {
-          console.log("complete");
-      }
-    );
+  constructor(public navCtrl: NavController,public navParams: NavParams,_configuration: Configuration) {
+    this.sensor=this.navParams.get('param1');    
+    this.ws = new $WebSocket("ws://"+_configuration.BaseURL+"/websockets");
+    this.stompClient = Stomp.over(this.ws);
+    this.stompClient.connect({}, function (frame) {
+        console.log("Connected: " + frame);
+        this.stompClient.subscribe("/home1/temperature", function (msg) {
+            this.sensor.value=msg.data.toString();     
+        });
+    }, function (err) {
+        console.log('err', err);
+    });
   }
+
+  
+   
 
   ionViewDidLoad() {
     console.log('Hello SensorPage Page');
   }
 
   ionViewWillLeave(){
-    this.ws.close(true);
+    this.stompClient.disconnect();
+    this.ws.close();
   }
 
 }

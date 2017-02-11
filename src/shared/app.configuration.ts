@@ -1,5 +1,5 @@
 export class Configuration {
-    BaseURL: string = "95.85.21.239:8080";
+    BaseURL: string = "192.168.1.10:8080";
 
     title: string = "Grandma monitor";
 }

@@ -62,10 +62,9 @@ export class LoginPage {
     console.log("Getting Systems...");
     console.log("AuthToken:"+this.authToken);   
     let getHeaders: Headers = new Headers({"Authorization":this.authToken});
-    this.http.get(this.Base_URL+"/systems",{headers: getHeaders})
-      .map(res => res.json())
+    this.http.get(this.Base_URL+"/systems/",{headers: getHeaders})     
       .subscribe(        
-        _embedded => this.gotoSystemsPage(_embedded.systems), 
+        res => this.gotoSystemsPage(res.json()), 
         err => console.log(err),
         () => console.log('Request Complete')
       );    
