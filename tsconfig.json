@@ -6,9 +6,9 @@
     "experimentalDecorators": true,
     "lib": [
       "dom",
-      "es2015"
+      "es6"
     ],
-    "module": "es2015",
+    "module": "es6",
     "moduleResolution": "node",
     "sourceMap": true,
     "target": "es5"
