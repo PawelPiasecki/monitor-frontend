@@ -1,8 +1,9 @@
 export class Sensor {
 
     public id:number;
-    public name:String;
     public state:boolean;
+    public name:String;
+    public socketUrl:String;
     public value:number;
     
 }

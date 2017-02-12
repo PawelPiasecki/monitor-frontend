@@ -25,19 +25,11 @@
       <h2>{{sensor.name}}</h2>      
     </ion-item>
 
-    <img src="http://icons.iconarchive.com/icons/icons8/windows-8/512/Science-Temperature-icon.png">
-
     <ion-card-content>
       Sensor temperatury <br>
       Temperatura: {{sensor.value}}      
-    </ion-card-content>
-      <button (click)="press()">sdfsdfds</button>
-    <button (click)="send()">send</button>
+    </ion-card-content>    
 
-    <ion-item>
-        <ion-label>Status</ion-label>
-        <ion-toggle [(ngModel)]="sensor.state" checked="{{sensor.state}}"></ion-toggle>
-    </ion-item>
 
   </ion-card>
 </ion-content>

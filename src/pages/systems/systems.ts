@@ -23,14 +23,8 @@ export class SystemsPage {
 
   constructor(public navCtrl: NavController,public navParams: NavParams,private menuCtrl: MenuController) {
     this.menuCtrl.enable(true);    
-    console.log(this.navParams.get('param1'));
-    this.sensors1 = [{id:1,name:"Sensor1",state: true,value:27}];
-    this.rooms1 = [{id:1,name: "duzy pokoj",sensors: this.sensors1}];
-
-    this.systems = [
-       {id:1,name: "System #1",info: "infos",localization: "Babcia1",rooms: this.rooms1}
-      
-    ];
+    this.systems=this.navParams.get('param1');
+   
 
     
 

@@ -26,6 +26,7 @@ export class SensorPage {
   
   public sensor: Sensor;
   stompClient: any;
+  intervalID:any;
 
   
 
@@ -37,7 +38,14 @@ export class SensorPage {
     //var socket = new $WebSocket("ws://"+_configuration.BaseURL+"/websockets");
     this.stompClient =  Stomp.client('ws://'+_configuration.BaseURL+'/websockets');
     //this.stompClient = Stomp.over(socket);
-    this.stompClient.connect();
+    var that = this;
+     var connect_callback = function() {
+      that.subscribe();
+    };
+
+    this.stompClient.connect("guest","guest",connect_callback);
+    
+   
 
   }
 
@@ -49,15 +57,18 @@ export class SensorPage {
   }
 
   ionViewWillLeave(){
+    clearInterval(this.intervalID);
     this.stompClient.disconnect();
   }
-  press(){
-    this.stompClient.subscribe("/home1/temperature", function (msg) {
-      //this.sensor.value=msg.body.toString();
-      console.log(msg);
+  subscribe(){
+    var that = this;
+    this.stompClient.subscribe("/"+that.sensor.socketUrl, function (msg) {
+      that.sensor.value=msg.body.toString();      
     });
+    this.getValue();
   }
-  send(){
-    this.stompClient.send("/broker/home1/temperature", {}, JSON.stringify({  }));
+  getValue(){
+    var that = this;
+    this.intervalID = setInterval(()=>that.stompClient.send("/broker/"+that.sensor.socketUrl, {}, JSON.stringify({  })),5000);
   }
 }
