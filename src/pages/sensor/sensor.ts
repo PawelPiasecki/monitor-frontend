@@ -2,9 +2,9 @@ import { Configuration } from './../../shared/app.configuration';
 import { Component } from '@angular/core';
 import { NavController,NavParams } from 'ionic-angular';
 import { Sensor } from '../../model/sensor';
-import * as Stomp from 'stompjs';
-import * as SockJS from 'sockjs';
-
+//import * as Stomp from 'stompjs';
+//import * as SockJS from 'sockjs';
+import { $WebSocket } from "angular2-websocket"
 
 
 /*
@@ -14,6 +14,7 @@ import * as SockJS from 'sockjs';
   Ionic pages and navigation.
 */
 
+declare var Stomp:any;
 
 @Component({
   selector: 'page-sensor',
@@ -30,30 +31,33 @@ export class SensorPage {
 
 
   constructor(public navCtrl: NavController,public navParams: NavParams,_configuration: Configuration) {
-    this.sensor=this.navParams.get('param1');    
-    var socket = new SockJS(_configuration.BaseURL+"/websockets");
-    this.stompClient = Stomp.over(socket);
-    console.log(this.stompClient);
-    console.log(socket);
-    this.stompClient.connect({}, function (frame) {
-        console.log("Connected: " + frame);
-        this.stompClient.subscribe("/home1/temperature", function (msg) {
-            this.sensor.value=msg.data.toString();     
-        });
-    }, function (err) {
-        console.log('err', err);
-    });
+
+
+    this.sensor=this.navParams.get('param1');
+    //var socket = new $WebSocket("ws://"+_configuration.BaseURL+"/websockets");
+    this.stompClient =  Stomp.client('ws://'+_configuration.BaseURL+'/websockets');
+    //this.stompClient = Stomp.over(socket);
+    this.stompClient.connect();
+
   }
 
-  
-   
 
   ionViewDidLoad() {
     console.log('Hello SensorPage Page');
+
+    console.log(this.stompClient);
   }
 
   ionViewWillLeave(){
     this.stompClient.disconnect();
   }
-
+  press(){
+    this.stompClient.subscribe("/home1/temperature", function (msg) {
+      //this.sensor.value=msg.body.toString();
+      console.log(msg);
+    });
+  }
+  send(){
+    this.stompClient.send("/broker/home1/temperature", {}, JSON.stringify({  }));
+  }
 }
