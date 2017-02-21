@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { SystemPage } from '../system/system';
 import { System } from '../../model/system';
-import { Room } from '../../model/room';
-import { Sensor } from '../../model/sensor';
 import { Storage } from '@ionic/storage';
 import { Http, Headers } from '@angular/http';
 import { Configuration } from './../../shared/app.configuration';
