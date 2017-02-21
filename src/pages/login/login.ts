@@ -1,3 +1,4 @@
+import { SystemsService } from './../../services/systems/systems.service';
 import { Configuration } from './../../shared/app.configuration';
 import { Component } from '@angular/core';
 import { Http, Headers } from '@angular/http';
@@ -28,7 +29,7 @@ export class LoginPage {
     error: string;
     user: string;
 
-  constructor(public navCtrl: NavController,private http: Http,public storage: Storage,private menuCtrl: MenuController,private _configuration: Configuration) {
+  constructor(public navCtrl: NavController,private http: Http,public storage: Storage,private menuCtrl: MenuController,private _configuration: Configuration,public systemsService: SystemsService) {
     this.Base_URL = "http://"+_configuration.BaseURL
     this.menuCtrl.enable(false);   
     this.storage.get('auth_token').then((val)=> {
@@ -62,7 +63,7 @@ export class LoginPage {
     console.log("Getting Systems...");
     console.log("AuthToken:"+this.authToken);   
     let getHeaders: Headers = new Headers({"Authorization":this.authToken});
-    this.http.get(this.Base_URL+"/systems/",{headers: getHeaders})     
+    this.http.get(this.Base_URL+"/systems",{headers: getHeaders})     
       .subscribe(        
         res => this.gotoSystemsPage(res.json()), 
         err => console.log(err),
@@ -72,8 +73,9 @@ export class LoginPage {
   }  
 
   gotoSystemsPage(systemsData){
+    this.systemsService.setSystems(systemsData);
     console.log(systemsData);
-    this.navCtrl.setRoot(SystemsPage, {param1:systemsData} );
+    this.navCtrl.setRoot(SystemsPage);
   }
 
   ionViewDidLoad() {

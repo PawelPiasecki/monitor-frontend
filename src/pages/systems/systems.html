@@ -10,7 +10,14 @@
   <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
   </button>  
-    <ion-title>Systems</ion-title>
+    <ion-title>
+      Systems
+    </ion-title>
+  <ion-buttons end>
+      <button ion-button icon-only (click)="refreshSystems()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>

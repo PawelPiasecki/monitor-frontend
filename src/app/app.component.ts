@@ -1,3 +1,4 @@
+import { SystemsService } from './../services/systems/systems.service';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
@@ -14,7 +15,8 @@ declare var FCMPlugin;
 
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [SystemsService]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -82,6 +84,11 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    if(page.component!=SystemsPage){
+       this.nav.push(page.component);
+    }else {
+      this.nav.setRoot(page.component);     
+    }
+   
   }
 }

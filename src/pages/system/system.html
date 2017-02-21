@@ -19,6 +19,6 @@
 <ion-content >
     <ion-item-group *ngFor="let room of system.rooms">
       <ion-item-divider light>{{room.name}}</ion-item-divider>
-      <button ion-item *ngFor="let sensor of room.sensors" (click)="gotoSensor(sensor)">{{sensor.name}}</button>
+      <button ion-item *ngFor="let sensor of room.sensors | isActive" (click)="gotoSensor(sensor)">{{sensor.name}}</button>
     </ion-item-group>  
 </ion-content>

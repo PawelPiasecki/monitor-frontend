@@ -1,3 +1,4 @@
+import { SystemsService } from './../services/systems/systems.service';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -9,6 +10,7 @@ import { LoginPage } from '../pages/login/login';
 import { SystemPage } from '../pages/system/system';
 import { SensorPage } from '../pages/sensor/sensor';
 import { Storage } from '@ionic/storage';
+import { ActivePipe } from '../pages/system/isactive-pipe';
 
 
 
@@ -21,7 +23,8 @@ import { Storage } from '@ionic/storage';
     AboutPage,
     LoginPage,
     SystemPage,
-    SensorPage
+    SensorPage,
+    ActivePipe
 
   ],
   imports: [
@@ -40,6 +43,7 @@ import { Storage } from '@ionic/storage';
 
   ],
   providers: [Storage,{provide: ErrorHandler, useClass: IonicErrorHandler}],
+  
 })
 
 export class AppModule {}

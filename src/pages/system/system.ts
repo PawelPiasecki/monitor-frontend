@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController,NavParams } from 'ionic-angular';
 import { System } from '../../model/system';
-import { SensorPage } from '../sensor/sensor'
+import { SensorPage } from '../sensor/sensor';
+
 
 
 /*
@@ -11,7 +12,7 @@ import { SensorPage } from '../sensor/sensor'
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-system',
+  selector: 'page-system', 
   templateUrl: 'system.html'
 })
 export class SystemPage {
