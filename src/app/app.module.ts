@@ -1,15 +1,18 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
-import { SystemsPage } from '../pages/systems/systems';
-import { NotificationsPage } from '../pages/notifications/notifications';
-import { SettingsPage } from '../pages/settings/settings';
+import { HttpModule } from '@angular/http';
 import { AboutPage } from '../pages/about/about';
 import { LoginPage } from '../pages/login/login';
-import { SystemPage } from '../pages/system/system';
+import { NotificationsPage } from '../pages/notifications/notifications';
 import { SensorPage } from '../pages/sensor/sensor';
-import { Storage } from '@ionic/storage';
+import { SettingsPage } from '../pages/settings/settings';
 import { ActivePipe } from '../pages/system/isactive-pipe';
+import { SystemPage } from '../pages/system/system';
+import { SystemsPage } from '../pages/systems/systems';
+import { MyApp } from './app.component';
+import { ErrorHandler, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { Storage } from '@ionic/storage';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 
@@ -27,7 +30,10 @@ import { ActivePipe } from '../pages/system/isactive-pipe';
 
   ],
   imports: [
-    IonicModule.forRoot(MyApp,{platforms: {android: {scrollAssist: false,autoFocusAssist: false}}})
+    IonicModule.forRoot(MyApp,{platforms: {android: {scrollAssist: false,autoFocusAssist: false}}}),
+    IonicStorageModule.forRoot(),
+    BrowserModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,7 +47,7 @@ import { ActivePipe } from '../pages/system/isactive-pipe';
     SensorPage
 
   ],
-  providers: [Storage,{provide: ErrorHandler, useClass: IonicErrorHandler}],
+  providers: [],
   
 })
 
