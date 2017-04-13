@@ -1,12 +1,12 @@
-import { SystemsService } from './../../services/systems/systems.service';
-import { Configuration } from './../../shared/app.configuration';
 import { Component } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-import { NavController, MenuController } from 'ionic-angular';
+import { Configuration } from './../../shared/app.configuration';
+import { Headers, Http } from '@angular/http';
+import { MenuController, NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { SystemsPage } from './../systems/systems';
-
+import { SystemsService } from './../../services/systems/systems.service';
 import 'rxjs/add/operator/map';
+
 
     //TODO add logout(clean key in storage)
 

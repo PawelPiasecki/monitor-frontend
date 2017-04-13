@@ -1,11 +1,9 @@
-import { Injectable } from '@angular/core';
-
-import { Subject } from 'rxjs/Rx';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
-import { StompConfig } from './';
-
 import * as Stomp from 'stompjs';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Injectable } from '@angular/core';
+import { StompConfig } from './';
+import { Subject } from 'rxjs/Rx';
+
 
 /** possible states for the STOMP service */
 export enum STOMPState {

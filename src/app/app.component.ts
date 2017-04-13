@@ -1,12 +1,12 @@
-import { SystemsService } from './../services/systems/systems.service';
+import { AboutPage } from '../pages/about/about';
 import { Component, ViewChild } from '@angular/core';
+import { LoginPage } from '../pages/login/login';
 import { Nav, Platform } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
-import { SystemsPage } from '../pages/systems/systems';
 import { NotificationsPage } from '../pages/notifications/notifications';
 import { SettingsPage } from '../pages/settings/settings';
-import { AboutPage } from '../pages/about/about';
-import { LoginPage } from '../pages/login/login';
+import { Splashscreen, StatusBar } from 'ionic-native';
+import { SystemsPage } from '../pages/systems/systems';
+import { SystemsService } from './../services/systems/systems.service';
 
 
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController,NavParams } from 'ionic-angular';
-import { System } from '../../model/system';
+import { NavController, NavParams } from 'ionic-angular';
 import { SensorPage } from '../sensor/sensor';
+import { System } from '../../model/system';
 
 
 
