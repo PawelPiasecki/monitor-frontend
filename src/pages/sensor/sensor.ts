@@ -1,10 +1,7 @@
-import { Configuration } from './../../shared/app.configuration';
 import { Component } from '@angular/core';
-import { NavController,NavParams } from 'ionic-angular';
+import { Configuration } from './../../shared/app.configuration';
+import { NavController, NavParams } from 'ionic-angular';
 import { Sensor } from '../../model/sensor';
-//import * as Stomp from 'stompjs';
-//import * as SockJS from 'sockjs';
-import { $WebSocket } from "angular2-websocket"
 
 
 /*
@@ -34,10 +31,8 @@ export class SensorPage {
   constructor(public navCtrl: NavController,public navParams: NavParams,_configuration: Configuration) {
 
 
-    this.sensor=this.navParams.get('param1');
-    //var socket = new $WebSocket("ws://"+_configuration.BaseURL+"/websockets");
-    this.stompClient =  Stomp.client('ws://'+_configuration.BaseURL+'/websockets');
-    //this.stompClient = Stomp.over(socket);
+    this.sensor=this.navParams.get('param1');    
+    this.stompClient =  Stomp.client('ws://'+_configuration.BaseURL+'/websockets');    
     var that = this;
      var connect_callback = function() {
       that.subscribe();

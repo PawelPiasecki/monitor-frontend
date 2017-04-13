@@ -1,11 +1,11 @@
-import { SystemsService } from './../../services/systems/systems.service';
 import { Component } from '@angular/core';
-import { NavController, NavParams, MenuController } from 'ionic-angular';
-import { SystemPage } from '../system/system';
-import { System } from '../../model/system';
-import { Storage } from '@ionic/storage';
-import { Http, Headers } from '@angular/http';
 import { Configuration } from './../../shared/app.configuration';
+import { Headers, Http } from '@angular/http';
+import { MenuController, NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { System } from '../../model/system';
+import { SystemPage } from '../system/system';
+import { SystemsService } from './../../services/systems/systems.service';
 
 /*
   Generated class for the Systems page.
