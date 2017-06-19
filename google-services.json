@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "434670653150",
+    "firebase_url": "https://monitor-9be0a.firebaseio.com",
+    "project_id": "monitor-9be0a",
+    "storage_bucket": "monitor-9be0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434670653150:android:93937ee5b25f88b1",
+        "android_client_info": {
+          "package_name": "com.ionicframework.monitorfrontend137083"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434670653150-gempnk814pjnogutg87hfm9rmmgl27mp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGHuu84jWITO5k-PkiotqFyDKqPtfFqeM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

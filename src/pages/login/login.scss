@@ -1,12 +1,52 @@
 page-login {
-    .vertical-align-content > *
-    {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+    .login-content {
+    background: #b2fdff;
+ 
+    .logo-row {
+      padding-top: 10px;
+      padding-bottom: 20px;
     }
-    .horizontal-align-text
-    {
-        text-align: right;
+ 
+    .login-box {
+      background: #63c4c6;
+      padding: 20px 20px 0px 20px;
+      margin-top: 30px;
+      border-radius: 30px;
     }
+ 
+    ion-row {
+       align-items: center;
+       text-align: center;
+     }
+ 
+     ion-item {
+         border-radius: 30px !important;
+         padding-left: 30px !important;
+         font-size: 0.9em;
+         margin-bottom: 10px;
+         border: 1px solid #ffffff;
+         border-bottom: 0px !important;
+         box-shadow: none !important;
+     }
+ 
+     .signup-col {
+       margin: 0px 16px 0px 16px;
+       padding-bottom: 20px;
+     }
+ 
+     .item-inner {
+       border-bottom-color: #ffffff !important;
+       box-shadow: none !important;
+     }
+ 
+     .submit-btn {
+       background: #1d4647;
+       color: #ffffff;
+       border-radius: 30px !important;
+       border: 1px solid #ffffff;
+     }
+ 
+    
+  }
+
 }
