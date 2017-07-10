@@ -56,7 +56,8 @@
         "cordova-plugin-statusbar",
         "cordova-plugin-device",
         "cordova-plugin-splashscreen",
-        "ionic-plugin-keyboard"
+        "ionic-plugin-keyboard",
+        "cordova-plugin-touch-id"
     ],
     "cordovaPlatforms": [
         "android",
@@ -73,7 +74,8 @@
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
             "cordova-sqlite-storage": {},
-            "ionic-plugin-keyboard": {}
+            "ionic-plugin-keyboard": {},
+            "cordova-plugin-touch-id": {}
         },
         "platforms": [
             "ios"
