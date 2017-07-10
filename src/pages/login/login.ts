@@ -33,10 +33,10 @@ export class LoginPage {
     this.Base_URL = "http://"+_configuration.BaseURL
     this.menuCtrl.enable(false);   
     this.storage.get('auth_token').then((val)=> {
-      this.authToken=val;
+      this.authToken = val;      
     }).catch(error => {
       console.log(error);
-    }).then(()=>this.getSystems());
+    }).then(()=>this.checkFingerprint());
 
   }
 
@@ -71,6 +71,20 @@ export class LoginPage {
       );    
     
   }  
+
+  checkFingerprint() {
+    if ((<any>window).platform.is('ios') && (<any>window).plugins.touchid.isAvailable) {
+      (<any>window).plugins.touchid.verifyFingerprint(
+        'Scan your fingerprint please', // this will be shown in the native scanner popup
+        function (msg) { this.getSystems() }, // success handler: fingerprint accepted
+        function (msg) { alert('Please try again: ' + JSON.stringify(msg)) } // error handler with errorcode and localised reason
+      );
+    } else {
+      this.getSystems();
+    }
+     
+    
+  }
 
   gotoSystemsPage(systemsData){
     this.systemsService.setSystems(systemsData);
